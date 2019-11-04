@@ -21,7 +21,7 @@ $("#add-train").on("click", function () {
     frequency = $("#frequency").val().trim();
 
     // Pushing to database
-    database.ref().set({
+    database.ref().push({
         name: name,
         destination: destination,
         firstTrain: firstTrain,
@@ -32,7 +32,7 @@ $("#add-train").on("click", function () {
 });
 
 
-database.ref().on("value", function (snapshot) {
+database.ref().on("child_added", function (snapshot) {
     console.log(snapshot)
     var nextArr;
     var minAway;
